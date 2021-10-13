@@ -10,7 +10,11 @@ ARG sbfspot_home=/usr/local/bin/sbfspot.3
 
 COPY ./start.sh /
 
+USER root
+
 RUN chmod u+x /start.sh \
       && chown $user:$group /start.sh
+
+USER $user
 
 ENTRYPOINT ["/start.sh"]
